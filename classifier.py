@@ -1,6 +1,31 @@
 from taipy.gui import Gui
 
-index = "<h1>Happy learning</h1>"
+# index = "<h1>Happy learning</h1>" // using html tags
+# index = "# Happy learning" // using markdown
+
+content = ""
+img_path = "placeholder_image.png"
+
+index = """
+<|text-center| 
+<|{"logo.png"}|image|width=25vw|>
+
+<|{content}|file_selector|extensions=.png|>
+select an image from from pc
+
+<|{img_path}|image|>
+
+<|label goes here|indicator|value=0|min=0|max=100|width=25vw|>
+
+
+>
+"""
+
+
+def on_change(state, var_name, var_val):
+    if var_name =="content":
+        state.img_path = var_val
+    print(var_name, var_val)
 
 app = Gui(page=index)
 
